@@ -1,0 +1,20 @@
+.settings-button{flex-shrink:0;padding:8px 10px;background:#eef3e7;color:#537045;border-radius:7px;font-size:11px;white-space:nowrap}
+.settings-button:hover{background:#e4edda}
+dialog{max-height:calc(var(--vh) - 32px);overflow-y:auto;overscroll-behavior:contain}
+.mode-switch{border:0;margin:18px 0 10px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode-switch legend{font-size:12px;margin-bottom:10px;color:#57654e}
+.mode-switch label{display:flex;align-items:center;gap:10px;padding:13px 12px;margin:0;border:1px solid #e0e6d8;border-radius:10px;cursor:pointer;background:#fafbf7}
+.mode-switch label:has(input:checked){border-color:#8aaf78;background:#edf4e5}
+.mode-switch input{width:17px;height:17px;padding:0;margin:0;accent-color:#2b6744;flex-shrink:0}
+.mode-switch strong{display:block;font-size:13px;font-weight:600}.mode-switch small{display:block;margin-top:5px;font-size:10px;color:#87947b}
+.dialog-options{margin-top:20px;padding-top:6px;border-top:1px solid #e8eddf}
+.options-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.option-field{min-width:0}.option-field label,.advanced-options label{margin:8px 0;font-size:12px}
+.option-field input,.option-field select,.advanced-options select{width:100%;padding:11px;border:1px solid #d7e0cd;border-radius:8px;background:#fff;color:#3f5136;font-size:14px}
+.option-description{font-size:11px!important;line-height:1.6!important;min-height:18px;margin:10px 0;color:#8b967e!important}
+.option-warning{font-size:11px!important;line-height:1.7;background:#fff5df;border:1px solid #eee1b8;color:#8e7331!important;padding:9px;border-radius:7px}
+.advanced-options{margin:14px 0;border:1px solid #e5ebdc;border-radius:8px;padding:10px 12px;background:#fafcf7}
+.advanced-options summary{cursor:pointer;font-size:11px;color:#748966}.advanced-options .hint{margin-bottom:2px;font-size:10px}
+.option-provider{margin-bottom:2px}.dialog-options>.hint{font-size:10px}
+#settings-form .dialog-actions{flex-wrap:wrap}#settings-form .dialog-actions button{font-size:12px;padding:11px 14px}
+@media(max-width:760px){.composer-bottom{flex-wrap:wrap}.model-label{flex-basis:100%;margin-bottom:1px}.settings-button{margin-right:auto}.option-field input,.option-field select,.advanced-options select{font-size:16px}.mode-switch label{padding:12px 9px}.mode-switch strong{font-size:12px}.mode-switch small{font-size:9px}dialog{padding:22px 18px}}

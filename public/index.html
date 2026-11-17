@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7f3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="你的设备，你的对话。通过私有网络，随时继续 Codex 任务。">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/options.css">
+  <title>RelayDeck · 你的远程工作台</title>
+</head>
+<body>
+  <section id="login" class="login-view">
+    <div class="login-card">
+      <img class="brand-icon large" src="/icon.svg" alt="">
+      <p class="eyebrow">YOUR PRIVATE WORKSPACE</p>
+      <h1>工作继续，<br>不必守在电脑前。</h1>
+      <p class="login-description">连接你的设备，继续你的 Codex 对话。<br>执行留在电脑，进度随身可见。</p>
+      <form id="login-form">
+        <label for="access-code">工作台访问码</label>
+        <input id="access-code" type="password" required autocomplete="current-password" placeholder="输入本机生成的访问码">
+        <button class="primary" id="login-button" type="submit">连接 RelayDeck <span aria-hidden="true">↗</span></button>
+        <p id="login-error" role="alert" class="error-text"></p>
+      </form>
+      <p class="hint">在运行统一服务的电脑上执行 <code>npm run access</code> 查看访问码。</p>
+      <div class="privacy-note"><span class="dot"></span>私有连接 · 本地执行</div>
+    </div>
+  </section>
+  <main id="app" class="workspace view-threads" hidden>
+    <aside id="device-panel" class="device-panel">
+      <a class="brand" href="/" aria-label="RelayDeck 首页"><img class="brand-icon" src="/icon.svg" alt=""><span>RelayDeck</span><span class="version">BETA</span></a>
+      <div class="section-label">我的设备 <button class="icon-button" data-action="pair" aria-label="添加设备">＋</button></div>
+      <div id="devices" class="devices"></div>
+      <div class="device-bottom">
+        <p class="workspace-note">任务在所选电脑上执行。<br>离开网页后，已接收的任务继续运行。</p>
+        <button class="text-button" data-action="help">使用与连接说明 <span>↗</span></button>
+        <button class="text-button" data-action="logout">退出工作台</button>
+        <div class="connection"><span id="connection-dot" class="dot"></span><span id="connection-label">正在连接</span></div>
+      </div>
+    </aside>
+    <div id="panel-overlay" class="panel-overlay" hidden></div>
+    <section class="thread-panel">
+      <header class="thread-heading"><button class="icon-button mobile-only" data-action="devices" aria-label="切换设备">☰</button><div><p class="eyebrow">WORKSPACE</p><h2 id="device-name">会话</h2></div><button class="icon-button" data-action="refresh" aria-label="刷新会话">↻</button></header>
+      <button class="new-thread" data-action="new"><span>＋</span> 开始新对话</button>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索会话" aria-label="搜索会话"></label>
+      <div class="list-label">最近对话 <span id="thread-count"></span></div>
+      <div id="threads" class="thread-list"></div>
+      <button id="more-threads" class="load-more" hidden>加载更多会话</button>
+      <div class="thread-footer">上下文随会话保留</div>
+    </section>
+    <section class="chat-panel">
+      <header class="chat-heading"><button class="icon-button mobile-only" data-action="back" aria-label="返回会话列表">‹</button><div class="chat-title-wrap"><h2 id="chat-title">随时接上，继续向前。</h2><p id="chat-subtitle">选择一段对话，或开始新的任务</p></div><span id="task-status" class="status-pill" hidden></span></header>
+      <div id="messages" class="messages" aria-live="polite" aria-relevant="additions text"></div>
+      <div id="approvals" class="approvals"></div>
+      <div id="composer-wrap" class="composer-wrap" hidden>
+        <div id="task-error" class="task-error" role="alert" hidden></div>
+        <form id="composer" class="composer">
+          <textarea id="message-input" rows="2" placeholder="告诉这台电脑，接下来做什么…" aria-label="发送给 Codex 的消息"></textarea>
+          <div class="composer-bottom"><span id="model-label" class="model-label">本机配置</span><button id="model-settings-button" type="button" class="settings-button" data-action="settings">模型 / 强度</button><button id="release-button" type="button" class="stop-button" hidden>交还桌面</button><button id="stop-button" type="button" class="stop-button" hidden>■ 停止</button><button id="send-button" type="submit" class="send-button" aria-label="发送消息">↑</button></div>
+        </form>
+        <div class="composer-caption"><span id="send-state">任务由所选设备执行</span><span>Enter 发送 · Shift + Enter 换行</span></div>
+      </div>
+    </section>
+  </main>
+  <dialog id="modal"><div id="modal-content"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

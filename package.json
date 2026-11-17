@@ -1,0 +1,27 @@
+{
+  "name": "relaydeck",
+  "version": "0.2.1",
+  "private": true,
+  "type": "module",
+  "description": "A private mobile control room for Codex across your computers.",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "agent": "node src/remote-agent.js",
+    "doctor": "node scripts/doctor.js",
+    "access": "node scripts/access.js",
+    "pair": "node scripts/pair.js",
+    "test": "node --test test/*.test.js",
+    "test:browser": "node scripts/browser-test.js"
+  },
+  "dependencies": {
+    "dompurify": "^3.3.0",
+    "marked": "^17.0.0",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}

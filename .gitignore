@@ -1,0 +1,11 @@
+node_modules/
+.relaydeck/
+.dev/
+test-results/
+dist/
+*.log
+.env
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
